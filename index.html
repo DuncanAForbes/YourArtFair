@@ -46,9 +46,9 @@
     {{/rows}}
   </script>
 
-	<script id="articleTable" type="text/html">
+	<script id="fairTable" type="text/html">
 		<table>
-			<tr><th class="fancy">Fair</th><th class="Start Date">Start Date</th><th class="End Date">End Date</th><th class="">Article</th><th>Tags</th></tr>
+			<tr><th class="fancy">Fair</th><th class="start">Start Date</th><th class="website">Website</th><th class="">Location</th><th>Tags</th></tr>
 		  {{#rows}}
 		  	<tr class="{{fair}}"><td class="light-type">{{fair}}</td><td class="start">{{start}}</td><td class="website"><a href="{{url}}" target="_blank">{{website}}</a></td>
 		  	<td class="location">{{#location}}<a href="#">{{location}}</a> {{/location}}</td><td class="tag">{{#tags}}<a href="#">{{tag}}</a> {{/tags}}</td></tr>
@@ -67,13 +67,13 @@
       drawTags(gData)
       cleanDates(gData)
       pageTitle(gData)
-      Sheetsee.makeTable(gData.reverse(), "#articleTable")
-      Sheetsee.initiateTableFilter(gData, "#articleSearch", "#articleTable")
+      Sheetsee.makeTable(gData.reverse(), "#fairTable")
+      Sheetsee.initiateTableFilter(gData, "#articleSearch", "#fairTable")
 
       $(document).on("click", ".tag", function(event){
         var tag = $(event.target).text()
         var tagFilter = getTagMatches(gData, tag)
-        Sheetsee.makeTable(tagFilter.reverse(), "#articleTable")
+        Sheetsee.makeTable(tagFilter.reverse(), "#fairTable")
       })
     }
   </script>
