@@ -18,12 +18,12 @@ function existingTagsList(data) {
 // them into their own objects which can be made
 // individual links in the html
 function separateTags(data) {
-	data.forEach(function findMultiTags(article) {
-		if (article.tags === "") return
-		if (article.tags.indexOf(',') >= 0) {
-			var tagArray = parseTags(article.tags)
+	data.forEach(function findMultiTags(fair) {
+		if (fair.tags === "") return
+		if (fair.tags.indexOf(',') >= 0) {
+			var tagArray = parseTags(fair.tags)
 			var tagObjArray = arrayIntoObjects(tagArray)
-			article.tags = tagObjArray
+			fair.tags = tagObjArray
 		}
 		else {
 			article.tags = [{"tag": article.tags}]
