@@ -50,8 +50,8 @@
 		<table>
 			<tr><th class="fancy">Fair</th><th class="Start Date">Start Date</th><th class="End Date">End Date</th><th class="">Article</th><th>Tags</th></tr>
 		  {{#rows}}
-		  	<tr class="{{Subject}}"><td class="light-type">{{Subject}}</td><td class="Start Date">{{Start Date}}</td><td class="article"><a href="{{url}}" target="_blank">{{article}}</a></td>
-		  	<td class="tag">{{#tags}}<a href="#">{{tag}}</a> {{/tags}}</td></tr>
+		  	<tr class="{{fair}}"><td class="light-type">{{fair}}</td><td class="start">{{start}}</td><td class="website"><a href="{{url}}" target="_blank">{{website}}</a></td>
+		  	<td class="location">{{#location}}<a href="#">{{location}}</a> {{/location}}</td><td class="tag">{{#tags}}<a href="#">{{tag}}</a> {{/tags}}</td></tr>
 		  {{/rows}}
 	  </table>
 	</script>
