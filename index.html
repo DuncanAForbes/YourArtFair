@@ -48,9 +48,9 @@
 
 	<script id="articleTable" type="text/html">
 		<table>
-			<tr><th class="fancy">&#8470;</th><th class="date">Date</th><th class="">Article</th><th>Tags</th></tr>
+			<tr><th class="fancy">Fair</th><th class="Start Date">Start Date</th><th class="End Date">End Date</th><th class="">Article</th><th>Tags</th></tr>
 		  {{#rows}}
-		  	<tr class="{{rowNumber}}"><td class="light-type">{{rowNumber}}</td><td class="date">{{date}}</td><td class="article"><a href="{{url}}" target="_blank">{{article}}</a></td>
+		  	<tr class="{{Subject}}"><td class="light-type">{{Subject}}</td><td class="Start Date">{{Start Date}}</td><td class="article"><a href="{{url}}" target="_blank">{{article}}</a></td>
 		  	<td class="tag">{{#tags}}<a href="#">{{tag}}</a> {{/tags}}</td></tr>
 		  {{/rows}}
 	  </table>
