@@ -67,7 +67,7 @@
       drawTags(gData)
       cleanDates(gData)
       pageTitle(gData)
-      Sheetsee.makeTable(gData.reverse(), "#fairTable")
+      Sheetsee.makeTable(gData.reverse(), fair, "#fairTable")
       Sheetsee.initiateTableFilter(gData, "#articleSearch", "#fairTable")
 
       $(document).on("click", ".tag", function(event){
