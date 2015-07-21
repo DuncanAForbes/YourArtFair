@@ -26,7 +26,7 @@ function separateTags(data) {
 			fair.tags = tagObjArray
 		}
 		else {
-			article.tags = [{"tag": article.tags}]
+			fair.tags = [{"tag": fair.tags}]
 		}
 	})
   return data
@@ -76,7 +76,7 @@ function drawTags(data) {
 function pageTitle(data) {
 	var amount = data.length
 	var contents = ich.title({
-  	numArticles: amount
+  	numFairs: amount
 	})
 $('#title').html(contents)
 }
