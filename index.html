@@ -46,9 +46,10 @@
 	<script id="fairTable" type="text/html">
 		<table>
 			<tr><th class="fancy">&#8470;</th><th class="">Fair</th><th class="date">Start</th><th class="">Website</th><th>Tags</th></tr>
-		   {{#rows}}
-		    <tr><td>{{fair}}</td><td>{{start}}</td><td>{{end}}</td><td>{{url}}</td></tr>
-		 {{/rows}}
+		     {{#rows}}		+		   {{#rows}}
+-		  	<tr class="{{rowNumber}}"><td class="light-type">{{rowNumber}}</td><td class="date">{{start}}</td><td class="fair"><a href="{{url}}" target="_blank">{{fair}}</a></td>		+		    <tr><td>{{fair}}</td><td>{{start}}</td><td>{{end}}</td><td>{{url}}</td></tr>
+-		  	<td class="tag">{{#tags}}<a href="#">{{tag}}</a> {{/tags}}</td></tr>		+		 {{/rows}}
+-		  {{/rows}}
 	  </table>
 	</script>
 
