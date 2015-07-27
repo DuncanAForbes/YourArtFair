@@ -12,6 +12,7 @@
 		<link rel="shortcut icon" href="https://raw.github.com/jlord/sheetsee-pocket/master/favicon-p.png"/>
 		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 		<link media="screen" rel="stylesheet" type="text/css" href="css/style.css"> 
+		<script src="js/modernizr.custom.js"></script>
 	
 	<script type="text/javascript">
               var _gaq = _gaq || [];
@@ -72,16 +73,37 @@
     {{/rows}}
   </script>
 
+  	
 	<script id="fairTable" type="text/html">
-		<table>
- 		<tr><th class="fancy">&#8470;</th><th class="">Fair</th><th class="date">Start</th><th class="date">End</th><th>Tags</th></tr>
-	    {{#rows}}
-	  	<tr class="{{rowNumber}}"><td class="light-type">{{rowNumber}}</td><td class="fair"><a href="http://{{url}}" target="_blank">{{fair}}</a></td><td class="date">{{start}}</td><td class="date">{{end}}</td>
-	  	<td class="tag">{{#tags}}<a href="#">{{tag}}</a> {{/tags}}</td></tr>
-	  {{/rows}}
-	  </table>
-	</script>
+	<div class="main">
+	<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-list">
+		<div class="cbp-vm-options">
+			<a href="#" class="cbp-vm-icon cbp-vm-list cbp-vm-selected" data-view="cbp-vm-view-list">List View</a>
+			<a href="#" class="cbp-vm-icon cbp-vm-grid " data-view="cbp-vm-view-grid">Grid View</a>
+			
+		</div>
 
+		<ul>
+		{{#rows}}
+			<li>
+				<a class="cbp-vm-image fancy {{rowNumber}} light-type" href="#">&#8470; {{rowNumber}}</a>
+				<h3 class="cbp-vm-title"><a href="http://{{url}}" target="_blank">{{fair}}</a></h3>
+				<div class="cbp-vm-date">Start: {{start}}</div>
+				<div class="cbp-vm-date">End: {{end}}</div>
+				<div class="cbp-vm-details">
+					{{#tags}}<a href="#">{{tag}}</a> {{/tags}}
+				</div>
+				
+			</li>
+		{{/rows}}
+		</ul>
+
+	 	</div>
+	</div><!-- /main -->
+	</script>
+	
+	<script src="js/classie.js"></script>
+	<script src="js/cbpViewModeSwitch.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var URL = "1e9VwEMpo5vXXJSe4JZ9ukAyDvVgDRPi6S4RHR3p7TgY"
@@ -101,8 +123,38 @@
         var tagFilter = getTagMatches(gData, tag)
         Sheetsee.makeTable(tagFilter, "#fairTable")
       })
+
+      var container = document.getElementById( 'cbp-vm' ),
+		optionSwitch = Array.prototype.slice.call( container.querySelectorAll( 'div.cbp-vm-options > a' ) );
+
+	function init() {
+		optionSwitch.forEach( function( el, i ) {
+			el.addEventListener( 'click', function( ev ) {
+				ev.preventDefault();
+				_switch( this );
+			}, false );
+		} );
+	}
+
+	function _switch( opt ) {
+		// remove other view classes and any any selected option
+		optionSwitch.forEach(function(el) { 
+			classie.remove( container, el.getAttribute( 'data-view' ) );
+			classie.remove( el, 'cbp-vm-selected' );
+		});
+		// add the view class for this option
+		classie.add( container, opt.getAttribute( 'data-view' ) );
+		// this option stays selected
+		classie.add( opt, 'cbp-vm-selected' );
+	}
+
+	init();
+
+
     }
   </script>
+
+ 	
   
 
 </body>
